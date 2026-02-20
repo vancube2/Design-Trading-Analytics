@@ -12,11 +12,11 @@ export const useAnalytics = (trades: Trade[], dateRange: { start: Date; end: Dat
     }, [trades, dateRange, selectedSymbol]);
 
     const stats = useMemo(() => {
-        const totalPnL = filteredTrades.reduce((acc, t) => acc + t.pnl, 0);
-        const totalVolume = filteredTrades.reduce((acc, t) => acc + (t.entryPrice * t.quantity), 0);
-        const totalFees = filteredTrades.reduce((acc, t) => acc + t.fee, 0);
+        const totalPnL = filteredTrades.reduce((acc: number, t: Trade) => acc + t.pnl, 0);
+        const totalVolume = filteredTrades.reduce((acc: number, t: Trade) => acc + (t.entryPrice * t.quantity), 0);
+        const totalFees = filteredTrades.reduce((acc: number, t: Trade) => acc + t.fee, 0);
         const winRate = (filteredTrades.filter(t => t.pnl > 0).length / filteredTrades.length) * 100 || 0;
-        const avgTradeDuration = filteredTrades.reduce((acc, t) => acc + t.duration, 0) / filteredTrades.length || 0;
+        const avgTradeDuration = filteredTrades.reduce((acc: number, t: Trade) => acc + t.duration, 0) / filteredTrades.length || 0;
 
         const longTrades = filteredTrades.filter(t => t.side === 'LONG');
         const shortTrades = filteredTrades.filter(t => t.side === 'SHORT');
@@ -25,15 +25,15 @@ export const useAnalytics = (trades: Trade[], dateRange: { start: Date; end: Dat
         const winningTrades = filteredTrades.filter(t => t.pnl > 0);
         const losingTrades = filteredTrades.filter(t => t.pnl < 0);
 
-        const grossProfit = winningTrades.reduce((acc, t) => acc + t.pnl, 0);
-        const grossLoss = Math.abs(losingTrades.reduce((acc, t) => acc + t.pnl, 0));
+        const grossProfit = winningTrades.reduce((acc: number, t: Trade) => acc + t.pnl, 0);
+        const grossLoss = Math.abs(losingTrades.reduce((acc: number, t: Trade) => acc + t.pnl, 0));
         const profitFactor = grossLoss === 0 ? grossProfit : grossProfit / grossLoss;
 
         const largestGain = Math.max(...filteredTrades.map(t => t.pnl), 0);
         const largestLoss = Math.min(...filteredTrades.map(t => t.pnl), 0);
 
-        const avgWin = winningTrades.reduce((acc, t) => acc + t.pnl, 0) / winningTrades.length || 0;
-        const avgLoss = losingTrades.reduce((acc, t) => acc + t.pnl, 0) / losingTrades.length || 0;
+        const avgWin = winningTrades.reduce((acc: number, t: Trade) => acc + t.pnl, 0) / winningTrades.length || 0;
+        const avgLoss = losingTrades.reduce((acc: number, t: Trade) => acc + t.pnl, 0) / losingTrades.length || 0;
 
         // PnL Over Time (Cumulative)
         let cumulativePnL = 0;

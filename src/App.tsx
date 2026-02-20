@@ -222,7 +222,7 @@ function App() {
           <div className="card bg-accent-purple/5 border-accent-purple/20">
             <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <Zap size={18} className="text-accent-purple" />
-              AI Session Insight
+              Smart Session Analysis
             </h4>
             <p className="text-sm text-white/90 mb-4 italic leading-relaxed">
               "Based on your 30-day history, your <span className="text-primary-bull font-bold">Europe Session</span> performance is significantly stronger. Consider focusing your high-conviction setups between 08:00 - 16:00 UTC."

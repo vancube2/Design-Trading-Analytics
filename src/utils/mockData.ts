@@ -1,4 +1,4 @@
-import { subDays, startOfDay, format, addHours } from 'date-fns';
+import { subDays } from 'date-fns';
 
 export interface Trade {
   id: string;
@@ -20,10 +20,10 @@ export const SYMBOLS = ['SOL/USDC', 'BTC/USDC', 'ETH/USDC', 'JUP/USDC', 'PYTH/US
 const generateTrade = (index: number, daysAgo: number): Trade => {
   const symbol = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
   const side = Math.random() > 0.5 ? 'LONG' : 'SHORT';
-  const entryPrice = symbol.startsWith('SOL') ? 140 + Math.random() * 20 : 
-                     symbol.startsWith('BTC') ? 60000 + Math.random() * 5000 : 
-                     symbol.startsWith('ETH') ? 3000 + Math.random() * 500 : 2 + Math.random() * 5;
-  
+  const entryPrice = symbol.startsWith('SOL') ? 140 + Math.random() * 20 :
+    symbol.startsWith('BTC') ? 60000 + Math.random() * 5000 :
+      symbol.startsWith('ETH') ? 3000 + Math.random() * 500 : 2 + Math.random() * 5;
+
   const priceChangePercent = (Math.random() * 0.1) - 0.04; // -4% to +6%
   const exitPrice = entryPrice * (1 + (side === 'LONG' ? priceChangePercent : -priceChangePercent));
   const quantity = Math.random() * 100;
