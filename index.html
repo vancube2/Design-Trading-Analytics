@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deriverse Analytics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-dark': '#0a0a12',
+            'surface-card': '#161625',
+            'surface-hover': '#1e1e32',
+            'primary-bull': '#00ffa3',
+            'secondary-bear': '#ff0055',
+            'accent-purple': '#7000ff',
+            'text-primary': '#ffffff',
+            'text-secondary': '#b0b0b0',
+            'border-color': 'rgba(255, 255, 255, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0a0a12;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
